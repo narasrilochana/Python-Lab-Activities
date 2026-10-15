@@ -1,0 +1,66 @@
+#1. simple Contact Book using list &amp dictionaries.#
+def contact_book():
+    contacts = []
+
+    while True:
+        print("\n--- Contact Book Menu ---")
+        print("1. Add Contact")
+        print("2. Display All Contacts")
+        print("3. Search Contact by Name")
+        print("4. Delete Contact")
+        print("5. Exit")
+
+        choice = input("Enter your choice (1-5): ").strip()
+
+        if choice == '1':
+            name = input("Enter name: ").strip()
+            phone = input("Enter phone number: ").strip()
+            email = input("Enter email address: ").strip()
+            
+            # Check if contact already exists
+            if any(c['name'].lower() == name.lower() for c in contacts):
+                print(f"⚠️ Contact '{name}' already exists.")
+            else:
+                new_contact = {'name': name, 'phone': phone, 'email': email}
+                contacts.append(new_contact)
+                print(f"✅ Contact '{name}' added successfully!")
+
+        elif choice == '2':
+            if not contacts:
+                print("📭 Your contact book is empty.")
+            else:
+                print("\n--- All Contacts ---")
+                for index, contact in enumerate(contacts, 1):
+                    print(f"{index}. Name: {contact['name']} | Phone: {contact['phone']} | Email: {contact['email']}")
+
+        elif choice == '3':
+            search_name = input("Enter name to search: ").strip().lower()
+            found = False
+            for contact in contacts:
+                if contact['name'].lower() == search_name:
+                    print(f"\n🔍 Contact Found:\n   Name: {contact['name']}\n   Phone: {contact['phone']}\n   Email: {contact['email']}")
+                    found = True
+                    break
+            if not found:
+                print(f"❌ No contact found with the name '{search_name}'.")
+
+        elif choice == '4':
+            delete_name = input("Enter the name of the contact to delete: ").strip().lower()
+            found = False
+            for contact in contacts:
+                if contact['name'].lower() == delete_name:
+                    contacts.remove(contact)
+                    print(f"🗑️ Contact '{contact['name']}' deleted successfully.")
+                    found = True
+                    break
+            if not found:
+                print(f"❌ No contact found with the name '{delete_name}'.")
+
+        elif choice == '5':
+            print("👋 Exiting Contact Book. Goodbye!")
+            break
+        else:
+            print("⚠️ Invalid choice. Please enter a number between 1 and 5.")
+
+if __name__ == "__main__":
+    contact_book()
