@@ -1,4 +1,4 @@
-#Student Information and Academic Summary
+#1. Student Information and Academic Summary
 name = input("Enter Student Name: ")
 usn = input("Enter USN: ")
 branch = input("Enter Branch: ")
@@ -18,7 +18,7 @@ print(f"Semester    : {semester}")
 print(f"Total Marks : {total:.2f}")
 print(f"Average     : {average:.2f}")
 
-#Scientific Calculator for Two Numbers
+#2. Scientific Calculator for Two Numbers
 num1 = float(input("Enter First Number: "))
 num2 = float(input("Enter Second Number: "))
 print("\nCALCULATOR")
@@ -36,3 +36,20 @@ else:
 
 print(f"Power          : {num1 ** num2}")
 
+#3. Mathematical Calculator using Built-in Functions and
+Math Module
+import math
+number = float(input("Enter a number: "))
+print("\n----- Mathematical Operations -----")
+print(f"Number         : {number}")
+print(f"Square         : {number ** 2}")
+print(f"Cube           : {number ** 3}")
+if number >= 0:
+    print(f"Square Root    : {math.sqrt(number):.2f}")
+else:
+    print("Square Root    : Undefined for negative numbers in real domain")
+print(f"Ceiling Value  : {math.ceil(number)}")
+print(f"Floor Value    : {math.floor(number)}")
+print(f"Absolute Value : {abs(number)}")
+print(f"Type           : {type(number)}")
+print(f"Memory Address : {id(number)}")
